@@ -9,7 +9,7 @@ kedro viz
 I had a bit of a problem when I was running this again and again. The error that I got was that the port 4141 (the default port for the visualization) was busy (or taken). In order to solve this I executed the following command:
 
 ```
-user -k 4141/tcp
+fuser -k 4141/tcp
 ```
 
 # Loading data
