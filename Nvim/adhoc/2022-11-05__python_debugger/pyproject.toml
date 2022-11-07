@@ -1,0 +1,13 @@
+[tool.pylint]
+# This is a comment 
+disable = ['C0114', # missing module docstring
+           'C0115', # missing class docstring
+           'C0116'] # missing function docstring
+max-line-length = 120
+
+
+[tool.pytest.ini_options]
+#  see https://stackoverflow.com/questions/50155464/using-pytest-with-a-src-layer
+pythonpath = [
+  "src"
+]
