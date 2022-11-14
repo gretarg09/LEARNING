@@ -32,5 +32,3 @@ SELECT * FROM dsongcp.flights WHERE dep_delay >= 15;
 
 CREATE OR REPLACE VIEW dsongcp.delayed_20 AS
 SELECT * FROM dsongcp.flights WHERE dep_delay >= 20;
-
-
