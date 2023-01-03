@@ -8,3 +8,4 @@
 * ```dbt test```
 * ```dbt docs generate```
 * ```dbt docs serve```
+* ```dbt source freshness```

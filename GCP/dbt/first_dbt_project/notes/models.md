@@ -45,3 +45,7 @@ In working on this project, we established some conventions for naming our model
 * **Fact (fct)** refers to any data that represents something that occurred or is occurring. Examples include sessions, transactions, orders, stories, votes. These are typically skinny, long tables.
 * **Dimension (dim)** refers to data that represents a person, place or thing. Examples include customers, products, candidates, buildings, employees.
 * Note: The Fact and Dimension convention is based on previous normalized modeling techniques.
+
+
+**[source]**
+[source](https://courses.getdbt.com/courses/take/fundamentals/texts/27962311-review)
