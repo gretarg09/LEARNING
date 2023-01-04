@@ -31,6 +31,15 @@
 * The freshness of sources can then be determined with the command dbt source freshness.
 
 
+# Tests
+
+Like one can see in the file models.jaffle_shop.src_jaffle_shop.yml it is possible to 
+add generic tests to a source. 
+In order to run the test execute the following:
+```
+dbt test --select source:name_of_the_source # e.g jaffle_shop
+```
+
 
 **[source]**
 [source](https://courses.getdbt.com/courses/take/fundamentals/texts/27962334-review)
