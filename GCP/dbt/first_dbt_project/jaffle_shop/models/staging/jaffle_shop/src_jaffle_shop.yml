@@ -1,19 +1,26 @@
 version: 2
 
-
 sources:
   - name: 'jaffle_shop' 
+    description: a clone of the dbt tutorial jaffle shop big query database.
     database: 'dbt-tutorial'
+
     tables:
+
       - name: 'customers'
+        description: the raw customers data.
         columns:
            - name: id
+             description: the primary key for the raw customers data.
              tests:
                - unique
                - not_null
+
       - name: 'orders'
+        description: the raw orders data.
         columns:
            - name: id
+             description: the primary key for the raw orders data.
              tests:
                - unique
                - not_null
