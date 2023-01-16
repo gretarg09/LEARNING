@@ -6,6 +6,7 @@
 * [Video series about dbt](https://www.youtube.com/playlist?list=PLy4OcwImJzBLJzLYxpxaPUmCWp8j1esvT)
 * [dbt courses](https://courses.getdbt.com/courses)
 
+* [python in dbt](https://docs.getdbt.com/blog/polyglot-dbt-python-dataframes-sql)
 
 
 ## BigQuery setup
