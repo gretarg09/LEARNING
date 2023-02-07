@@ -9,6 +9,8 @@
 * ```dbt docs generate```
 * ```dbt docs serve```
 * ```dbt source freshness```
+* ```dbt deps```
+* ```dbt compile```
 
 # profile
 

@@ -18,4 +18,6 @@ staged as (
     from source
 )
 
+select * from staged
+
 -- from `dbt-tutorial`.stripe.payment

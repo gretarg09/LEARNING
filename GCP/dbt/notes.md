@@ -29,3 +29,8 @@ select * from `dbt-tutorial.stripe.payment`;
 ```
 
 I will call this a first dbt project.
+
+
+# Unit testing dbt
+
+https://github.com/EqualExperts/dbt-unit-testing
