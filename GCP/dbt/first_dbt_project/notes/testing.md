@@ -21,3 +21,9 @@
     * ```dbt test --select test_type:singular```
     * ```dbt test --select one_specific_model```
 * Read more here in [testing documentation](https://docs.getdbt.com/reference/node-selection/test-selection-examples).
+
+
+# Unit testing
+
+* https://github.com/EqualExperts/dbt-unit-testing
+* https://www.equalexperts.com/blog/our-thinking/writing-unit-tests-for-dbt-with-tdd/

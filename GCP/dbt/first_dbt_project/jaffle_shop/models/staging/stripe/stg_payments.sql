@@ -12,12 +12,12 @@ staged as (
         paymentmethod as payment_method,
         status,
         -- amount is stored in cents, convert it to dollars 
-        amount / 100 as amount,
-       created as created_at
+        {{cents_to_dollars('amount') }} as amount,
+        created as created_at
 
     from source
 )
 
--- from `dbt-tutorial`.stripe.payment
-
 select * from staged
+
+-- from `dbt-tutorial`.stripe.payment

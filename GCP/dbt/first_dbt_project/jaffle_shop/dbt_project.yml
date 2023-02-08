@@ -38,3 +38,12 @@ models:
         +materialized: table
     staging:
         +materialized: view 
+
+
+vars:
+  unit_tests_config:
+    debug: true 
+    input_format: "csv"
+    column_separator: "|"
+    line_separator: "\n"
+    type_separator: "::"
