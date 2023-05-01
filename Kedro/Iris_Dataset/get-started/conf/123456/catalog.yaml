@@ -1,3 +1,0 @@
-example_iris_data:
-  filepath: data/01_raw/iris_testing.csv
-  type: pandas.CSVDataSet
