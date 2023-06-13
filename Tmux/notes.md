@@ -95,3 +95,9 @@ You can bind a series of commands by separating the commands with the
 * tmuxinator implode        - Deletes all current projects.
 * tmuxinator doctor         - Looks for problems with the tmuxinator and system configuration. 
 * tmuxinator debug          - Shows the script that tmuxinator will run, helping you figure out what's going wrong.
+
+
+# MY SETUP
+
+* I switch over to using tmux 2023-06-09. Its simply much easier to manage.
+* I found the fzf script [here](https://www.youtube.com/watch?v=BDYaUtOoCP8)

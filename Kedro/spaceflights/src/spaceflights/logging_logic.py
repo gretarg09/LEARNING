@@ -8,7 +8,7 @@ class MyCustomFormatter(logging.Formatter):
 
     def format(self, record):
 
-        rich.inspect(record)
+        #rich.inspect(record)
 
         record.asctime = self.formatTime(record, self.datefmt)
         custom_message = f"Custom logger -- {record.asctime} - {record.name} - {record.levelname} - {record.msg}"
