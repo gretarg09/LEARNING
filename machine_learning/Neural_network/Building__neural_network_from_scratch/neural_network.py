@@ -54,8 +54,8 @@ def backpropagation(z_1,
                     x,
                     y):
     '''backpropagation of the neural network'''
-    m = y.shape[1] # number of samples
     y = one_hot_encoding(y)
+    m = y.shape[1] # number of samples
 
     # Calculating W_2 
     d_z_2 = a_2 - y
@@ -64,10 +64,13 @@ def backpropagation(z_1,
 
     # Calculating W_1
     d_z_1 = w_2.T @ d_z_2 * derivative_ReLU(z_1)
-    d_w_1 = (1 / m) * d_z_1 @ x.T
+    d_w_1 = (1 / m) * d_z_1 @ x
     d_b_1 = (1 / m) * np.sum(d_z_1, axis=1, keepdims=True)
 
-    return d_w_1, d_b_1, d_w_2, d_b_2
+    return (d_w_1,
+            d_b_1,
+            d_w_2,
+            d_b_2)
 
 
 def update_parameters(w_1,
@@ -85,7 +88,10 @@ def update_parameters(w_1,
     w_2_updated = w_2 - learning_rate * d_w_2
     b_2_updated = b_2 - learning_rate * d_b_2
 
-    return w_1_updated, b_1_updated, w_2_updated, b_2_updated
+    return (w_1_updated,
+            b_1_updated,
+            w_2_updated,
+            b_2_updated)
 
 
 def get_predictions(a_2):
@@ -127,7 +133,6 @@ if __name__ == '__main__':
     data = load_data()
     X_train = data['training_data']['x'] 
     Y_train = data['training_data']['y'] 
-
     X_test = data['test_data']['x'] 
     Y_test = data['test_data']['y'] 
 
