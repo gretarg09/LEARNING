@@ -1,14 +1,20 @@
 import numpy as np
 from data_loader import load_data
+from matplotlib import pyplot as plt
 
 
 def init_params():
-    '''initialize parameters of the neural network'''
+    '''initialize parameters of the neural network
 
-    w_1 = np.random.rand(10, 784)
-    b_1 = np.random.rand(10, 1)
-    w_2 = np.random.rand(10, 10)
-    b_2 = np.random.rand(10, 1)
+    Our initial strategy is to intialize the weights and biases randomly between 
+    -0.5 and 0.5
+    '''
+
+
+    w_1 = np.random.rand(10, 784) - 0.5
+    b_1 = np.random.rand(10, 1) - 0.5
+    w_2 = np.random.rand(10, 10) - 0.5
+    b_2 = np.random.rand(10, 1) - 0.5
 
     return w_1, b_1, w_2, b_2
 
@@ -18,7 +24,7 @@ def ReLU(z):
 
 def derivative_ReLU(z):
     '''derivative of the ReLU activation function'''
-    return z > 0
+    return z >  0
 
 def softmax(z):
     '''softmax activation function'''
@@ -60,12 +66,12 @@ def backpropagation(z_1,
     # Calculating W_2 
     d_z_2 = a_2 - y
     d_w_2 = (1 / m) * d_z_2 @ a_1.T
-    d_b_2 = (1 / m) * np.sum(d_z_2, axis=1, keepdims=True)
+    d_b_2 = (1 / m) * np.sum(d_z_2)
 
     # Calculating W_1
     d_z_1 = w_2.T @ d_z_2 * derivative_ReLU(z_1)
     d_w_1 = (1 / m) * d_z_1 @ x
-    d_b_1 = (1 / m) * np.sum(d_z_1, axis=1, keepdims=True)
+    d_b_1 = (1 / m) * np.sum(d_z_1)
 
     return (d_w_1,
             d_b_1,
@@ -128,6 +134,47 @@ def gradient_descent(x, y, learning_rate, iterations):
     return w_1, b_1, w_2, b_2
 
 
+def make_predictions(X, w_1, b_1, w_2, b_2):
+    _, _, _, A2 = forward_propagation(w_1, b_1, w_2, b_2, X)
+    predictions = get_predictions(A2)
+    return predictions
+
+
+    current_image = current_image.reshape((28, 28)) * 255
+    plt.gray()
+    plt.imshow(current_image, interpolation='nearest')
+    plt.show()
+
+
+def test_prediction(index, W1, b1, W2, b2):
+    current_image = X_train[:, index, None]
+    prediction = make_predictions(X_train[:, index, None], W1, b1, W2, b2)
+    label = Y_train[index]
+    print("Prediction: ", prediction)
+    print("Label: ", label)
+    
+    current_image = current_image.reshape((28, 28)) * 255
+    plt.gray()
+    plt.imshow(current_image, interpolation='nearest')
+    plt.show()
+
+# TODO create a result image with 9 subplots
+# 1. image should contain 9 random images from the test set.
+# 2. image should contain 9 random images, from the test set, that are correctly classified by the model
+# 2. image should contain 9 random images, from the test set, that are not correctly classified by the model
+
+def create_result_image():
+
+    fig, axs = plt.subplots(3, 3, figsize=(10, 10))  # Create a grid of 3x3 subplots
+    for i in range(3):
+        for j in range(3):
+            axs[i, j].imshow(data)  # Replace with your data
+            axs[i, j].set_title("Plot "+str(3*i+j+1))
+
+    plt.tight_layout()  # Adjusts subplot params so that subplots are nicely fit in the figure.
+    plt.show()
+
+
 if __name__ == '__main__':
     # Get data
     data = load_data()
@@ -139,7 +186,7 @@ if __name__ == '__main__':
     # Train model 
     w_1, b_1, w_2, b_2 = gradient_descent(X_train, Y_train, 0.1, 1000)
 
-    # Test model
+    # Test model on test data
     z_1, a_1, z_2, a_2 = forward_propagation(X_test, w_1, b_1, w_2, b_2)
     print('\nFINAL ACCURACY: ', get_accuracy(get_predictions(a_2), Y_test))
 
