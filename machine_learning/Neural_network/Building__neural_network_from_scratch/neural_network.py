@@ -135,7 +135,7 @@ def gradient_descent(x, y, learning_rate, iterations):
 
 
 def make_predictions(X, w_1, b_1, w_2, b_2):
-    _, _, _, A2 = forward_propagation(w_1, b_1, w_2, b_2, X)
+    _, _, _, A2 = forward_propagation(X, w_1, b_1, w_2, b_2)
     predictions = get_predictions(A2)
     return predictions
 
@@ -163,13 +163,13 @@ def test_prediction(index, W1, b1, W2, b2):
 # 2. image should contain 9 random images, from the test set, that are correctly classified by the model
 # 2. image should contain 9 random images, from the test set, that are not correctly classified by the model
 
-def create_result_image():
-
+def create_result_image(X, Y, pred):
     fig, axs = plt.subplots(3, 3, figsize=(10, 10))  # Create a grid of 3x3 subplots
+
     for i in range(3):
         for j in range(3):
-            axs[i, j].imshow(data)  # Replace with your data
-            axs[i, j].set_title("Plot "+str(3*i+j+1))
+            axs[i, j].imshow(X[i+j].reshape((28, 28)) * 255)  # Replace with your data
+            axs[i, j].set_title(f'Label: {Y[i+j]}, Prediction: {pred[i+j]}')
 
     plt.tight_layout()  # Adjusts subplot params so that subplots are nicely fit in the figure.
     plt.show()
@@ -184,9 +184,21 @@ if __name__ == '__main__':
     Y_test = data['test_data']['y'] 
 
     # Train model 
-    w_1, b_1, w_2, b_2 = gradient_descent(X_train, Y_train, 0.1, 1000)
+    w_1, b_1, w_2, b_2 = gradient_descent(X_train, Y_train, 0.1, 100)
 
     # Test model on test data
     z_1, a_1, z_2, a_2 = forward_propagation(X_test, w_1, b_1, w_2, b_2)
     print('\nFINAL ACCURACY: ', get_accuracy(get_predictions(a_2), Y_test))
+
+
+    # Create result images
+    # randomly select 9 images from the test set
+    indices = np.random.choice(Y_test.shape[0], size=9, replace=False)
+
+    selected_images = X_test[indices]
+    selected_labels = Y_test[indices]
+    selected_predictions = make_predictions(selected_images, w_1, b_1, w_2, b_2)
+
+    create_result_image(selected_images, selected_labels, selected_predictions)
+
 
