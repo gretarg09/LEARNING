@@ -1,3 +1,4 @@
+'''
 """network2.py
 ~~~~~~~~~~~~~~
 An improved version of network.py, implementing the stochastic
@@ -256,3 +257,4 @@ def vectorized_result(j):
     e = np.zeros((10, 1))
     e[j] = 1.0
     return e
+'''

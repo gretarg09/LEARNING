@@ -10,9 +10,9 @@ simple, easily readable, and easily modifiable.  It is not optimized,
 and omits many desirable features.
 """
 
+from typing import List, Tuple 
 import random
 import numpy as np
-from typing import List, Tuple 
 
 
 class Initializer():
@@ -172,16 +172,9 @@ class Sigmoid:
     @staticmethod
     def normal(z: np.ndarray):
         """The sigmoid function."""
-        print('within normal')
-        print(z.shape)
-        print(z)
-
         return 1.0 / (1.0 + np.exp(-z))
 
     @staticmethod
     def prime(z: np.ndarray):
         """Derivative of the sigmoid function."""
-        print('within prime')
-        print(z.shape)
-
         return Sigmoid.normal(z) * (1 - Sigmoid.normal(z))
