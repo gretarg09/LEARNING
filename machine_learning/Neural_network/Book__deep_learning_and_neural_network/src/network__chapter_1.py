@@ -48,11 +48,11 @@ class Network(Initializer):
         return a
 
     def stochastic_gradient_descent(self,
-                                    training_data: List[Tuple[np.ndarray]] ,
+                                    training_data: List[Tuple[np.ndarray, np.ndarray]],
                                     epochs: int,
                                     mini_batch_size: int,
                                     eta: int,
-                                    test_data: List[Tuple[np.ndarray]]=None):
+                                    test_data: List[Tuple[np.ndarray, np.ndarray]]=None):
         """Train the neural network using mini-batch stochastic gradient descent.
 
         parameters:
@@ -178,3 +178,20 @@ class Sigmoid:
     def prime(z: np.ndarray):
         """Derivative of the sigmoid function."""
         return Sigmoid.normal(z) * (1 - Sigmoid.normal(z))
+
+
+if __name__ == '__main__':
+    from src import mnist_loader
+
+    training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
+
+    training_data = list(training_data)
+    validation_data = list(training_data)
+    test_data = list(test_data)
+
+    net = Network([784, 10])
+    net.stochastic_gradient_descent(training_data=training_data[:1000],
+                                    epochs=30,
+                                    mini_batch_size=10,
+                                    eta=100.0,
+                                    test_data=validation_data[:100])
