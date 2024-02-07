@@ -1,0 +1,12 @@
+name: BCM_pymc
+channels:
+- defaults
+dependencies:
+  - jupyter
+  - mkl-service
+  - seaborn
+  - statsmodels
+  - pip
+  - pip:
+     - "git+git://github.com/pymc-devs/pymc.git@main"
+     - watermark

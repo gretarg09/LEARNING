@@ -7,6 +7,7 @@
 * Have fewer than 4 arguments (~ I am not sure about this).
 * Have not duplication.
 * Use descriptive name.
+* Try to maximize the cohasion of the code (things that belong together should stick together). 
 
 **[Architecture]**
 

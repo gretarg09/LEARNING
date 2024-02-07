@@ -1,0 +1,10 @@
+jupyter
+seaborn
+mkl-service
+watermark
+pymc
+arviz
+theano-pymc
+mkl
+daft
+causalgraphicalmodels

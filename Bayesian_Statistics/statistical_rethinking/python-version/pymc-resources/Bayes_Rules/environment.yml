@@ -1,0 +1,20 @@
+name: bayes_rules
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - pandas
+  - requests
+  - pyreadr
+  - seaborn
+  - pip
+  - mkl-service
+  - scipy
+  - arviz
+  - ipykernel
+  - jupyterlab
+  - pre-commit
+  - black
+  - pip:
+    - watermark
+    - pymc==4.0.0b5
